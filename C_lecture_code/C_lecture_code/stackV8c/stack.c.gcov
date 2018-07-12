@@ -1,0 +1,137 @@
+        -:    0:Source:stack.c
+        -:    0:Graph:stack.gcno
+        -:    0:Data:stack.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:
+        -:    2:/*
+        -:    3: *  FILENAME: main.c
+        -:    4: *
+        -:    5: * Version 
+        -:    6: * An implementation of a stack datastructure;
+        -:    7: * Generic data types: type 'void *';
+        -:    8: * Generic element type: type 'void *'
+        -:    9: *
+        -:   10: */
+        -:   11:
+        -:   12:#include <assert.h>
+        -:   13:#include <stdlib.h>
+        -:   14:#include "stack.h"
+        -:   15:
+        -:   16:#define MAX_STACK_SIZE	10
+        -:   17:
+        -:   18:struct the_stack {
+        -:   19:  element_t data[MAX_STACK_SIZE];
+        -:   20:  int top;
+        -:   21:  destroy_element_func *destroy_element; // callback function
+        -:   22:  copy_element_func *copy_element;
+        -:   23:};
+        -:   24:
+        -:   25:typedef struct the_stack the_stack_t;
+        -:   26:
+        -:   27:static void check_assert( the_stack_t * const );
+        -:   28:
+        1:   29:err_code_t stack_create( stack_t *s, destroy_element_func *destroy_element, copy_element_func *copy_element )
+        -:   30:{
+        -:   31:  the_stack_t *t;
+        -:   32:
+        1:   33:  t = (the_stack_t *) malloc ( sizeof(the_stack_t) );
+        1:   34:  if (t == NULL )
+        -:   35:  {
+    #####:   36:    *s = NULL;
+    #####:   37:    return ERR_MEM;
+        -:   38:  }
+        -:   39:  
+        1:   40:  t->top = 0;	/* indicates empty stack */
+        -:   41: 
+        1:   42:  t->destroy_element = destroy_element;
+        1:   43:  t->copy_element = copy_element;
+        -:   44:  
+        1:   45:  *s = (stack_t)t;
+        1:   46:  return ERR_NONE;
+        -:   47:}
+        -:   48:
+        -:   49:
+        1:   50:err_code_t stack_free( stack_t *s )
+        -:   51:{
+        1:   52:  the_stack_t *t = (the_stack_t *)*s;
+        -:   53:  
+        2:   54:  while ( t->top != 0 ) {
+        -:   55:  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    #####:   56:    t->top--; 
+    #####:   57:    t->destroy_element( t->data[t->top] );// CLEANUP THE MEMORY ASSIGNED TO THE ELEMENT
+        -:   58:    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        -:   59:  }
+        -:   60:  
+        1:   61:  free(*s);
+        1:   62:  *s = NULL;
+        1:   63:  return ERR_NONE;
+        -:   64:}
+        -:   65:
+        5:   66:err_code_t stack_push( stack_t s, const element_t element )
+        -:   67:{
+        5:   68:  the_stack_t *t = (the_stack_t *)s;
+        -:   69:  
+        5:   70:  check_assert( t );
+        -:   71:  
+        5:   72:  if (  t->top == MAX_STACK_SIZE )
+    #####:   73:    return ERR_FULL;
+        -:   74:  
+        -:   75:  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        5:   76:  t->data[t->top++] = t->copy_element( element ); // CALL CALLBACK FUNC TO MAKE A DEEP COPY 
+        -:   77:  
+        -:   78:  //t->data[t->top++] = element; // NOT POSSIBLE IF = IS NOT DEFINED FOR THIS TYPE OF ELEMENT  
+        -:   79:  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        -:   80:  
+        5:   81:  return ERR_NONE;
+        -:   82:}
+        -:   83:
+        -:   84:
+        5:   85:err_code_t stack_pop( stack_t s )
+        -:   86:{
+        5:   87:  the_stack_t *t = (the_stack_t *)s;
+        -:   88:  
+        5:   89:  check_assert( t );
+        -:   90:  
+        5:   91:  if ( t->top == 0 )
+    #####:   92:    return ERR_EMPTY;
+        -:   93:  
+        -:   94:  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        5:   95:  t->top--; 
+        5:   96:  t->destroy_element( t->data[t->top] );// CALL CALLBACK FUN TO CLEANUP THE MEMORY ASSIGNED TO THE ELEMENT
+        -:   97:  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        -:   98:  
+        5:   99:  return ERR_NONE;
+        -:  100:}
+        -:  101:
+        -:  102:
+        5:  103:err_code_t stack_top( const stack_t s, element_t * element )
+        -:  104:{
+        5:  105:  the_stack_t *t = (the_stack_t *)s;
+        -:  106:  
+        5:  107:  check_assert( t );
+        -:  108:  
+        5:  109:  if ( t->top == 0 )
+    #####:  110:    return ERR_EMPTY;
+        -:  111:  
+        -:  112:  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	///	
+        5:  113:  *element = t->copy_element( t->data[t->top-1] ); // RETURN DEEP COPY
+        -:  114:  //*element = t->data[t->top-1]; // RETURN JUST A POINTER
+        -:  115:  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	
+        -:  116:  
+        5:  117:  return ERR_NONE;
+        -:  118:}
+        -:  119:
+        7:  120:unsigned int stack_size( const stack_t s )
+        -:  121:{
+        7:  122:  the_stack_t *t = (the_stack_t *)s;
+        -:  123:  
+        7:  124:  check_assert( t );
+        -:  125:  
+        7:  126:  return ( t->top );
+        -:  127:}
+        -:  128:
+       22:  129:static void check_assert( the_stack_t * const s )
+        -:  130:{
+       22:  131:  assert( (s->top >= 0) && (s->top <= MAX_STACK_SIZE) ); 
+       22:  132:}

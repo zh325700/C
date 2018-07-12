@@ -1,0 +1,112 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2:*  FILENAME: main.c
+        -:    3:*
+        -:    4:* Version
+        -:    5:* An implementation of a stack datastructure;
+        -:    6:* Generic data types: type 'void *';
+        -:    7:* Generic element type: type 'void *'
+        -:    8:*
+        -:    9:*/
+        -:   10:
+        -:   11:#include <stdio.h>
+        -:   12:#include <assert.h>
+        -:   13:#include <stdlib.h>
+        -:   14:
+        -:   15:#include "stack.h"
+        -:   16:
+        -:   17:void destroy_element(element_t); 
+        -:   18:element_t copy_element(element_t);
+        -:   19:
+        -:   20:static void err_handler( const err_code_t err );
+        -:   21:
+        1:   22:int main( void )
+        -:   23:{
+        -:   24:  
+        -:   25:  stack_t s; // 2nd stack: Stack stack2; etc.
+        -:   26:  long int value;
+        -:   27:  element_t element;
+        -:   28:  err_code_t err;
+        -:   29:  
+        -:   30:  //initialize the stack before using it
+        1:   31:  err_handler( stack_create(&s, &destroy_element, &copy_element) );
+        -:   32:  
+        -:   33:  // read values from the command prompt and push them on the stack
+        -:   34:  do
+        -:   35:  {
+        6:   36:    printf( "Give a value to push on the stack (negative value to quit): " );
+        6:   37:    scanf( "%20ld", &value );
+        6:   38:    if ( value >= 0 )
+        -:   39:    {
+        5:   40:      err = stack_push( s, (element_t)&value );
+        5:   41:      err_handler( err );
+        -:   42:    }
+        6:   43:  } while ( value >= 0 );
+        -:   44:  
+        1:   45:  printf( "\nThe stack size is %d\n", stack_size( s ) );
+        -:   46:  
+        1:   47:  printf( "\nThe stack values are:\n" );
+        7:   48:  while ( stack_size( s ) > 0)
+        -:   49:  {
+        5:   50:    err = stack_top( s, &element);
+        5:   51:    err_handler( err );
+        5:   52:    printf( "%ld\n", *(long int *)element );
+        -:   53:    // !!! include the following 'free' ONLY if top returns a deep copy to element
+        5:   54:    free(element);   // avoid memory leak  ...
+        5:   55:    err_handler( stack_pop( s ) );
+        -:   56:  }
+        -:   57:  
+        -:   58:  //destroy the stack
+        1:   59:  err_handler( stack_free( &s ) );
+        -:   60:  
+        1:   61:  return 0;
+        -:   62:}
+        -:   63:
+        -:   64:
+       17:   65:static void err_handler( const err_code_t err )
+        -:   66:{
+       17:   67:  switch( err ) {
+        -:   68:    case ERR_NONE:
+       17:   69:      break;
+        -:   70:    case  ERR_EMPTY:
+    #####:   71:      printf( "\nCan't execute this operation while the stack is empty.\n" );
+    #####:   72:      break;
+        -:   73:    case ERR_FULL:
+    #####:   74:      printf( "\nCan't execute this operation while the stack is full.\n" );
+    #####:   75:      break;
+        -:   76:    case ERR_MEM:
+    #####:   77:      printf( "\nMemory problem occured while executing this operation on the stack.\n" );
+    #####:   78:      break;
+        -:   79:    case ERR_INIT:
+    #####:   80:      printf( "\nStack initialization problem.\n" );
+    #####:   81:      break;
+        -:   82:    case ERR_UNDEFINED:
+    #####:   83:      printf( "\nUndefined problem occured while executing this operation on the stack.\n" );
+    #####:   84:      break;
+        -:   85:    default: // should never come here
+    #####:   86:      assert( 1==0 );
+        -:   87:  }
+       17:   88:}
+        -:   89:
+        -:   90:
+        5:   91:void destroy_element(element_t element)  
+        -:   92:{
+        5:   93:  free( element );
+        5:   94:}
+        -:   95:
+        -:   96:
+       10:   97:element_t copy_element(element_t element) 
+        -:   98:{
+        -:   99:  long int *p;
+       10:  100:  p = (long int *) malloc( sizeof(long int) );
+       10:  101:  assert ( p != NULL );
+       10:  102:  *p = *(long int *)element;
+       10:  103:  return (element_t)p;
+        -:  104:}
+        -:  105:
+        -:  106:
+        -:  107:

@@ -1,0 +1,158 @@
+0.000000 1519681428 Connection to SQL server established
+
+1.000000 1519681428 New table SensorData created
+
+2.000000 1519681428 A sensor node with 14 has opened a new connection
+
+3.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+4.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+5.000000 1519681428 A sensor node with 13 has opened a new connection
+
+6.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+7.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+8.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+9.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+10.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+11.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+12.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+13.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+14.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+15.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+16.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+17.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+18.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+19.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+20.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+21.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+22.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+23.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+24.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+25.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+26.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+27.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+28.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+29.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+30.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+31.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+32.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+33.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+34.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+35.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+36.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+37.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+38.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+39.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+40.000000 1519681428 A sensor node with 14 has closed a connection
+
+41.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+42.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+43.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+44.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+45.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+46.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+47.000000 1519681428 A sensor node with 14 has closed a connection
+
+48.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+49.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+50.000000 1519681428 A sensor node with 13 has opened a new connection
+
+51.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+52.000000 1519681428 Receive sensor with invalid sensor node ID: 13 
+
+53.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+54.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+55.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+56.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+57.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+58.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+59.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+60.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+61.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+62.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+63.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+64.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+65.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+66.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+67.000000 1519681428 A sensor node with 9 has opened a new connection
+
+68.000000 1519681428 Receive sensor with invalid sensor node ID: 9 
+
+69.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+70.000000 1519681428 Receive sensor with invalid sensor node ID: 9 
+
+71.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+72.000000 1519681428 Receive sensor with invalid sensor node ID: 9 
+
+73.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+74.000000 1519681428 Receive sensor with invalid sensor node ID: 9 
+
+75.000000 1519681428 Receive sensor with invalid sensor node ID: 14 
+
+76.000000 1519681428 A sensor node with 14 has closed a connection
+
+77.000000 1519681428 A sensor node with 14 has closed a connection
+
+78.000000 1519681428 Connection to SQL server lost
+

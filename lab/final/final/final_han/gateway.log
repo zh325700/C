@@ -1,0 +1,18 @@
+0.000000 1519681256 Connection to SQL server established
+
+1.000000 1519681256 New table SensorData created
+
+2.000000 1519681256 A sensor node with 12 has opened a new connection
+
+3.000000 1519681256 Connection to SQL server lost
+
+4.000000 1519681256 A sensor node with 13 has opened a new connection
+
+5.000000 1519681256 A sensor node with 12 has closed a connection
+
+6.000000 1519681256 A sensor node with 14 has opened a new connection
+
+7.000000 1519681256 A sensor node with 14 has closed a connection
+
+8.000000 1519681256 A sensor node with 12 has closed a connection
+
